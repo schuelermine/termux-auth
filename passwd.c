@@ -93,5 +93,5 @@ int main(void) {
     free(password);
     free(password_confirmation);
 
-    return EXIT_SUCCESS;
+    return ret;
 }
