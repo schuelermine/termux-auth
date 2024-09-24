@@ -89,6 +89,14 @@ bool termux_change_passwd(const char *new_password) {
     return is_password_changed;
 }
 
+// Remove file that stores password hash
+// Return true on success, false otherwise.
+bool termux_remove_passwd(void) {
+    int n = remove(AUTH_HASH_FILE_PATH);
+
+    return n == 0;
+}
+
 // Check validity of password (user name is ignored).
 // Return true if password is ok, otherwise return false.
 bool termux_auth(const char *user, const char *password) {
