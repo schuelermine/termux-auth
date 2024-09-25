@@ -22,6 +22,7 @@
 #include <string.h>
 #include <termios.h>
 #include <unistd.h>
+#include <errno.h>
 
 #include <openssl/sha.h>
 #include <openssl/evp.h>
@@ -92,9 +93,9 @@ bool termux_change_passwd(const char *new_password) {
 // Remove file that stores password hash
 // Return true on success, false otherwise.
 bool termux_remove_passwd(void) {
-    int n = remove(AUTH_HASH_FILE_PATH);
+    int n = unlink(AUTH_HASH_FILE_PATH);
 
-    return n == 0;
+    return n == 0 || errno == ENOENT;
 }
 
 // Check validity of password (user name is ignored).

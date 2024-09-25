@@ -18,6 +18,7 @@
 
 /** Utility for setting new password **/
 
+#include <errno.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -62,6 +63,11 @@ static int main_remove_password(void) {
         puts("Password login successfully disabled.");
         ret = EXIT_SUCCESS;
     } else {
+        if (errno == EISDIR) {
+            printf("Unexpectedly found directory where hashed password should be ("
+                   AUTH_HASH_FILE_PATH
+                   "), ignoring\n");
+        }
         puts("Failed to disable password login.");
     }
 
