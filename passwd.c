@@ -126,7 +126,7 @@ int main(int argc, char **argv) {
         // otherwise, fall through
     default:
         fprintf(stderr,
-                "Run %s without args to set a password, or with -d to remove the password\n",
+                "Run %s without args to set a password. Pass option -d to disable authentication credentials (lock account).\n",
                 argv[0]);
         return EXIT_FAILURE;
     }
