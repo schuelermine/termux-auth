@@ -120,7 +120,7 @@ int main(int argc, char **argv) {
     case 1:
         return main_set_password();
     case 2:
-        if (strcmp(argv[1], "-d") == 0) {
+        if (strcmp(argv[1], "-d") == 0 || strcmp(argv[1], "-l") == 0) {
             return main_remove_password();
         }
         // otherwise, fall through
