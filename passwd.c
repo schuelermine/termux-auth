@@ -125,7 +125,9 @@ int main(int argc, char **argv) {
         }
         // otherwise, fall through
     default:
-        fprintf(stderr, "Supported options are no options or -d\n");
+        fprintf(stderr,
+                "Run %s without args to set a password, or with -d to remove the password\n",
+                argv[0]);
         return EXIT_FAILURE;
     }
 }
